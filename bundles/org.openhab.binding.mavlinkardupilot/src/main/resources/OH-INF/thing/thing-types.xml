@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<thing:thing-descriptions bindingId="mavlinkardupilot"
+<thing:thing-descriptions bindingId="mavlinkardupilot" bindingName = "mavlinkardupilot"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
 	xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0 https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
 	<!-- Sample Thing Type -->
-	<thing-type id="sample">
-		<!-- Comment this in for Things which need a Bridge to function.
-			<supported-bridge-type-refs>
-			<bridge-type-ref id="MavLinkArduPilotBridge" />
-			</supported-bridge-type-refs>
-		-->
+	<!-- TODO Change listed to false at the end after configuring the sample -->
+	<thing-type id="sample" listed = "true">
+		<!-- Comment this in for Things which need a Bridge to function. -->
+<!--			<supported-bridge-type-refs>-->
+<!--			<bridge-type-ref id="MavLinkArduPilotBridge" />-->
+<!--			</supported-bridge-type-refs>-->
 
 		<label>MavLinkArduPilot Binding Thing</label>
 		<description>Sample thing for MavLinkArduPilot Binding</description>
@@ -39,8 +39,8 @@
 
 	<!-- Sample Channel Type -->
 	<channel-type id="sample-channel">
-		<item-type>Number:Temperature</item-type>
-		<label>Example Temperature</label><!-- Use uppercase words, except prepositions. 2-3 words, max 25 chars -->
+		<item-type>Number:Refresh Interval</item-type>
+		<label>Example Refresh</label><!-- Use uppercase words, except prepositions. 2-3 words, max 25 chars -->
 		<description>Sample channel for MavLinkArduPilot Binding</description>
 	</channel-type>
 </thing:thing-descriptions>
