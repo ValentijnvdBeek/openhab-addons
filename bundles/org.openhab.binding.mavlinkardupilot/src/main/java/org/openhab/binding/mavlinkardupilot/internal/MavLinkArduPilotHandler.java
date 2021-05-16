@@ -19,7 +19,6 @@ import org.eclipse.jdt.annotation.Nullable;
 import org.openhab.core.thing.ChannelUID;
 import org.openhab.core.thing.Thing;
 import org.openhab.core.thing.ThingStatus;
-import org.openhab.core.thing.ThingStatusInfo;
 import org.openhab.core.thing.binding.BaseThingHandler;
 import org.openhab.core.types.Command;
 import org.openhab.core.types.RefreshType;
@@ -45,26 +44,26 @@ public class MavLinkArduPilotHandler extends BaseThingHandler {
 
     @Override
     public void handleCommand(ChannelUID channelUID, Command command) {
-      try {
-          if (CHANNEL_1.equals(channelUID.getId())) {
-              if (command instanceof RefreshType) {
-                  // TODO: handle data refresh
-                  if (channelUID.getId().equals("channel1"))
-                      postCommand(channelUID, command);
-              }
+        try {
+            if (CHANNEL_1.equals(channelUID.getId())) {
+                if (command instanceof RefreshType) {
+                    // TODO: handle data refresh
+                    if (channelUID.getId().equals("channel1"))
+                        postCommand(channelUID, command);
+                }
 
-              // TODO: handle command
+                // TODO: handle command
 
-              // Note: if communication with thing fails for some reason,
-              // indicate that by setting the status with detail information:
-              // updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.COMMUNICATION_ERROR,
-              // "Could not control device at IP address x.x.x.x");
-          }
-          updateStatus(ThingStatus.ONLINE);
-      } catch (Exception e) {
+                // Note: if communication with thing fails for some reason,
+                // indicate that by setting the status with detail information:
+                // updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.COMMUNICATION_ERROR,
+                // "Could not control device at IP address x.x.x.x");
+            }
+            updateStatus(ThingStatus.ONLINE);
+        } catch (Exception e) {
             logger.error(e.getMessage());
             updateStatus(ThingStatus.OFFLINE);
-      }
+        }
     }
 
     @Override
@@ -91,13 +90,13 @@ public class MavLinkArduPilotHandler extends BaseThingHandler {
                 updateStatus(ThingStatus.ONLINE);
             else
                 updateStatus(ThingStatus.OFFLINE);
-//            boolean thingReachable = true; // <background task with long running initialization here>
-//            // when done do:
-//            if (thingReachable) {
-//                updateStatus(ThingStatus.ONLINE);
-//            } else {
-//                updateStatus(ThingStatus.OFFLINE);
-//            }
+            // boolean thingReachable = true; // <background task with long running initialization here>
+            // // when done do:
+            // if (thingReachable) {
+            // updateStatus(ThingStatus.ONLINE);
+            // } else {
+            // updateStatus(ThingStatus.OFFLINE);
+            // }
         });
 
         // These logging types should be primarily used by bindings

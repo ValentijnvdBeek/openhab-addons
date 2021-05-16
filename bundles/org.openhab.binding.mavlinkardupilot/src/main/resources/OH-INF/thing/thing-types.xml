@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<thing:thing-descriptions bindingId="mavlinkardupilot" bindingName = "mavlinkardupilot"
+<thing:thing-descriptions bindingId="mavlinkardupilot" bindingName="mavlinkardupilot"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
 	xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0 https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
 	<!-- Sample Thing Type -->
 	<!-- TODO Change listed to false at the end after configuring the sample -->
-	<thing-type id="sample" listed = "true">
+	<thing-type id="sample" listed="true">
 		<!-- Comment this in for Things which need a Bridge to function. -->
-<!--			<supported-bridge-type-refs>-->
-<!--			<bridge-type-ref id="MavLinkArduPilotBridge" />-->
-<!--			</supported-bridge-type-refs>-->
+		<!-- <supported-bridge-type-refs> -->
+		<!-- <bridge-type-ref id="MavLinkArduPilotBridge" /> -->
+		<!-- </supported-bridge-type-refs> -->
 
 		<label>MavLinkArduPilot Binding Thing</label>
 		<description>Sample thing for MavLinkArduPilot Binding</description>
