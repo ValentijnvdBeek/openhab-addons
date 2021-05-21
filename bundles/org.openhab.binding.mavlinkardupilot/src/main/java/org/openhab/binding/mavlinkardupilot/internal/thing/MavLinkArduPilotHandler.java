@@ -10,12 +10,13 @@
  *
  * SPDX-License-Identifier: EPL-2.0
  */
-package org.openhab.binding.mavlinkardupilot.internal;
+package org.openhab.binding.mavlinkardupilot.internal.thing;
 
 import static org.openhab.binding.mavlinkardupilot.internal.MavLinkArduPilotBindingConstants.*;
 
 import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.jdt.annotation.Nullable;
+import org.openhab.binding.mavlinkardupilot.internal.MavLinkArduPilotConfiguration;
 import org.openhab.core.thing.ChannelUID;
 import org.openhab.core.thing.Thing;
 import org.openhab.core.thing.ThingStatus;

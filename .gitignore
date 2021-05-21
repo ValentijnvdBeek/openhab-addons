@@ -30,3 +30,5 @@ pom.xml.versionsBackup
 openhab_addons/
 openhab_conf/
 openhab_userdata/
+
+bundles/org.openhab.binding.bluetooth.airthings/

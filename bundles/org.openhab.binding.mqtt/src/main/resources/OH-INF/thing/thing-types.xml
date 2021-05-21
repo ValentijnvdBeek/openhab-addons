@@ -158,7 +158,6 @@
 			<property name="lastwill"/>
 			<property name="reconnect_time_ms"/>
 			<property name="keep_alive_time_ms"/>
-		</properties>
 
 		<config-description>
 			<parameter name="brokerid" type="text" required="true">

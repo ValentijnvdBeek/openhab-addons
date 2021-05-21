@@ -22,8 +22,6 @@
       org.slf4j.*;resolution:=optional</bnd.importpackage>
 
   </properties>
-
-
   <artifactId>org.openhab.binding.mavlinkardupilot</artifactId>
   <name>openHAB Add-ons :: Bundles :: MavLinkArduPilot Binding</name>
   <dependencies>
@@ -46,4 +44,21 @@
       <version>1.7.28</version>
     </dependency>
   </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>fully.qualified.MainClass</mainClass>
+            </manifest>
+          </archive>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>

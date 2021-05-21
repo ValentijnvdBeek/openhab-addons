@@ -10,7 +10,7 @@
  *
  * SPDX-License-Identifier: EPL-2.0
  */
-package org.openhab.binding.mavlinkardupilot.internal;
+package org.openhab.binding.mavlinkardupilot.internal.thing;
 
 import static org.openhab.binding.mavlinkardupilot.internal.MavLinkArduPilotBindingConstants.*;
 
@@ -32,8 +32,10 @@ import org.osgi.service.component.annotations.Component;
  * @author Valentijn van de Beek - Initial contribution
  */
 @NonNullByDefault
-@Component(configurationPid = "binding.mavlinkardupilot", service = ThingHandlerFactory.class)
-public class MavLinkArduPilotHandlerFactory extends BaseThingHandlerFactory {
+@Component(configurationPid = "MavLinkArduPilotHandlerFactory", service = { ThingHandlerFactory.class,
+        MavLinkArduPilotDiscoveryService.class })
+public class MavLinkArduPilotHandlerFactory extends BaseThingHandlerFactory
+        implements MavLinkArduPilotDiscoveryService {
 
     private static final Set<ThingTypeUID> SUPPORTED_THING_TYPES_UIDS = Set.of(THING_TYPE_SAMPLE);
 
@@ -51,5 +53,8 @@ public class MavLinkArduPilotHandlerFactory extends BaseThingHandlerFactory {
         }
 
         return null;
+    }
+
+    public void sendWayPoint(String data) {
     }
 }

@@ -6,15 +6,27 @@
 
 	<!-- Sample Thing Type -->
 	<!-- TODO Change listed to false at the end after configuring the sample -->
+	<bridge-type id="MavLinkBroker" listed="true">
+		<label>MavLink Broker</label>
+		<description>Required for ArduPilot connection. DO NOT MODIFY!</description>
+		<!-- <channels> -->
+		<!-- <channel id="channel1" typeId="sample-channel"/> -->
+		<!-- </channels> -->
+		<config-description-ref uri="thing-type:mavlinkardupilot:mavBridge"></config-description-ref>
+	</bridge-type>
+
 	<thing-type id="sample" listed="true">
 		<!-- Comment this in for Things which need a Bridge to function. -->
-		<!-- <supported-bridge-type-refs> -->
-		<!-- <bridge-type-ref id="MavLinkArduPilotBridge" /> -->
-		<!-- </supported-bridge-type-refs> -->
+		<supported-bridge-type-refs>
+			<bridge-type-ref id="MavLinkBroker"/>
+		</supported-bridge-type-refs>
 
 		<label>MavLinkArduPilot Binding Thing</label>
 		<description>Sample thing for MavLinkArduPilot Binding</description>
 
+		<!-- <supported-bridge-type-refs> -->
+		<!-- <bridge-type-ref id="MavLinkBroker"/> -->
+		<!-- </supported-bridge-type-refs> -->
 		<channels>
 			<channel id="channel1" typeId="sample-channel"/>
 		</channels>
@@ -28,7 +40,7 @@
 			<parameter name="password" type="text" required="true">
 				<context>password</context>
 				<label>Password</label>
-				<description>Passwort to access the device</description>
+				<description>Password to access the device</description>
 			</parameter>
 			<parameter name="refreshInterval" type="integer" unit="s" min="1">
 				<label>Refresh Interval</label>
@@ -36,11 +48,11 @@
 			</parameter>
 		</config-description>
 	</thing-type>
-
 	<!-- Sample Channel Type -->
 	<channel-type id="sample-channel">
 		<item-type>Number:Refresh Interval</item-type>
 		<label>Example Refresh</label><!-- Use uppercase words, except prepositions. 2-3 words, max 25 chars -->
 		<description>Sample channel for MavLinkArduPilot Binding</description>
+		<config-description-ref uri="thing-type:sample:refreshInterval_channel"></config-description-ref>
 	</channel-type>
 </thing:thing-descriptions>
