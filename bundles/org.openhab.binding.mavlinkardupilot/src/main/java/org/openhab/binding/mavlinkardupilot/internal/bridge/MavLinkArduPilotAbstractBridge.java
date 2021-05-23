@@ -5,13 +5,18 @@ import java.net.Socket;
 import java.util.Collection;
 import java.util.Collections;
 
+import org.eclipse.jdt.annotation.NonNullByDefault;
+import org.eclipse.jdt.annotation.Nullable;
 import org.openhab.binding.mavlinkardupilot.internal.actions.MavLinkArduPilotActions;
 import org.openhab.binding.mavlinkardupilot.internal.thing.MavLinkArduPilotHandler;
 import org.openhab.core.thing.Bridge;
 import org.openhab.core.thing.ChannelUID;
+import org.openhab.core.thing.ThingStatus;
 import org.openhab.core.thing.binding.BaseBridgeHandler;
 import org.openhab.core.thing.binding.ThingHandlerService;
 import org.openhab.core.types.Command;
+import org.openhab.core.types.State;
+import org.osgi.service.component.annotations.Component;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,13 +26,17 @@ import io.dronefleet.mavlink.common.MavAutopilot;
 import io.dronefleet.mavlink.common.MavState;
 import io.dronefleet.mavlink.common.MavType;
 
+@Component(service = BaseBridgeHandler.class, configurationPid = "bridge.mavlinkardupilot")
+@NonNullByDefault
 public class MavLinkArduPilotAbstractBridge extends BaseBridgeHandler {
 
     int systemId = 255;
     int componentId = 0;
-
+    @Nullable
     MavlinkConnection connection;
+    @Nullable
     Heartbeat heartbeat;
+    @Nullable
     Thread heartbeatThread;
     private final Logger logger = LoggerFactory.getLogger(MavLinkArduPilotHandler.class);
 
@@ -47,7 +56,7 @@ public class MavLinkArduPilotAbstractBridge extends BaseBridgeHandler {
 
                 heartbeat = Heartbeat.builder().type(MavType.MAV_TYPE_GCS).autopilot(MavAutopilot.MAV_AUTOPILOT_INVALID)
                         .systemStatus(MavState.MAV_STATE_UNINIT).mavlinkVersion(3).build();
-
+                updateStatus(ThingStatus.ONLINE);
                 // Write an unsigned heartbeat
 
                 // Write a signed heartbeat
@@ -65,6 +74,12 @@ public class MavLinkArduPilotAbstractBridge extends BaseBridgeHandler {
 
     @Override
     public void handleCommand(ChannelUID channelUID, Command command) {
+    }
+
+    @Override
+    public void updateState(String channelID, State state) {
+        ChannelUID channelUID = new ChannelUID(this.getThing().getUID(), channelID);
+        updateState(channelUID, state);
     }
 
     @Override

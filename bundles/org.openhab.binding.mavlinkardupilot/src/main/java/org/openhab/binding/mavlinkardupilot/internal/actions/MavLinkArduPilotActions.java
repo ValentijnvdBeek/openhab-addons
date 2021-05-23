@@ -21,5 +21,4 @@ public class MavLinkArduPilotActions implements ThingActions {
     @Override
     public void deactivate() {
     }
-    
 }

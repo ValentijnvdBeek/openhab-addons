@@ -86,11 +86,13 @@ public class MavLinkArduPilotHandler extends BaseThingHandler {
 
         // Example for background initialization:
         scheduler.execute(() -> {
-            ThingStatus thingStatus = thing.getStatus();
-            if (thingStatus.equals(ThingStatus.ONLINE))
-                updateStatus(ThingStatus.ONLINE);
-            else
-                updateStatus(ThingStatus.OFFLINE);
+            updateStatus(ThingStatus.ONLINE);
+
+            // ThingStatus thingStatus = thing.getStatus();
+            // if (thingStatus.equals(ThingStatus.ONLINE))
+            // updateStatus(ThingStatus.ONLINE);
+            // else
+            // updateStatus(ThingStatus.OFFLINE);
             // boolean thingReachable = true; // <background task with long running initialization here>
             // // when done do:
             // if (thingReachable) {
