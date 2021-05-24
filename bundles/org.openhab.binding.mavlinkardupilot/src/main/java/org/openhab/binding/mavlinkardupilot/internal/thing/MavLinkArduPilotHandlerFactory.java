@@ -18,6 +18,8 @@ import java.util.Set;
 
 import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.jdt.annotation.Nullable;
+import org.openhab.binding.mavlinkardupilot.internal.bridge.MavLinkArduPilotAbstractBridge;
+import org.openhab.core.thing.Bridge;
 import org.openhab.core.thing.Thing;
 import org.openhab.core.thing.ThingTypeUID;
 import org.openhab.core.thing.binding.BaseThingHandlerFactory;
@@ -32,12 +34,12 @@ import org.osgi.service.component.annotations.Component;
  * @author Valentijn van de Beek - Initial contribution
  */
 @NonNullByDefault
-@Component(configurationPid = "MavLinkArduPilotHandlerFactory", service = { ThingHandlerFactory.class,
+@Component(configurationPid = "MavLinkArduPilotHandlerFactory", service = {ThingHandlerFactory.class,
         MavLinkArduPilotDiscoveryService.class })
 public class MavLinkArduPilotHandlerFactory extends BaseThingHandlerFactory
         implements MavLinkArduPilotDiscoveryService {
 
-    private static final Set<ThingTypeUID> SUPPORTED_THING_TYPES_UIDS = Set.of(THING_TYPE_SAMPLE);
+    private static final Set<ThingTypeUID> SUPPORTED_THING_TYPES_UIDS = Set.of(THING_TYPE_SAMPLE, BRIDGE_TYPE_SAMPLE);
 
     @Override
     public boolean supportsThingType(ThingTypeUID thingTypeUID) {
@@ -50,6 +52,10 @@ public class MavLinkArduPilotHandlerFactory extends BaseThingHandlerFactory
 
         if (THING_TYPE_SAMPLE.equals(thingTypeUID)) {
             return new MavLinkArduPilotHandler(thing);
+        }
+
+        if (BRIDGE_TYPE_SAMPLE.equals(thingTypeUID)) {
+            return new MavLinkArduPilotAbstractBridge((Bridge) thing);
         }
 
         return null;

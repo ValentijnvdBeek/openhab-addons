@@ -25,9 +25,13 @@ import org.openhab.core.thing.ThingTypeUID;
 public class MavLinkArduPilotBindingConstants {
 
     private static final String BINDING_ID = "mavlinkardupilot";
+    private static final String BINDING_BROKER = "mavlinkardupilot-broker";
+    public static final String PARAMETER_HOSTNAME = "127.0.0.1";
+    public static final String PARAMETER_PORT = "5760";
 
     // List of all Thing Type UIDs
     public static final ThingTypeUID THING_TYPE_SAMPLE = new ThingTypeUID(BINDING_ID, "sample");
+    public static final ThingTypeUID BRIDGE_TYPE_SAMPLE = new ThingTypeUID(BINDING_BROKER, "sample_broker");
 
     // List of all Channel ids
     public static final String CHANNEL_1 = "channel1";

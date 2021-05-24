@@ -1,5 +1,6 @@
 package org.openhab.binding.mavlinkardupilot.internal.discovery;
 
+import java.util.Collections;
 import java.util.Date;
 import java.util.Set;
 import java.util.concurrent.ScheduledFuture;
@@ -7,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.jdt.annotation.Nullable;
+import org.openhab.binding.mavlinkardupilot.internal.MavLinkArduPilotBindingConstants;
 import org.openhab.core.config.discovery.AbstractDiscoveryService;
 import org.openhab.core.config.discovery.DiscoveryService;
 import org.openhab.core.thing.ThingTypeUID;
@@ -17,8 +19,8 @@ import org.slf4j.LoggerFactory;
 @Component(service = DiscoveryService.class, configurationPid = "discovery.mavlinkardupilot")
 @NonNullByDefault
 public class MavLinkArduPilotBridgeDiscovery extends AbstractDiscoveryService {
+    private static final int DISCOVER_TIMEOUT_SECONDS = 60;
     private final Logger logger = LoggerFactory.getLogger(MavLinkArduPilotBridgeDiscovery.class);
-
     private int timeout;
 
     private @Nullable ScheduledFuture<?> scheduledStop;
@@ -27,6 +29,11 @@ public class MavLinkArduPilotBridgeDiscovery extends AbstractDiscoveryService {
             boolean backgroundDiscoveryEnabledByDefault) {
         super(supportedThingTypes, 0, backgroundDiscoveryEnabledByDefault);
         this.timeout = timeout;
+    }
+
+    public MavLinkArduPilotBridgeDiscovery() {
+        super(Collections.singleton(MavLinkArduPilotBindingConstants.BRIDGE_TYPE_SAMPLE), DISCOVER_TIMEOUT_SECONDS,
+                true);
     }
 
     private synchronized void stopTimeout() {

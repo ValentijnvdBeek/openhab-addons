@@ -16,7 +16,6 @@ import org.openhab.core.thing.binding.BaseBridgeHandler;
 import org.openhab.core.thing.binding.ThingHandlerService;
 import org.openhab.core.types.Command;
 import org.openhab.core.types.State;
-import org.osgi.service.component.annotations.Component;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,7 +25,7 @@ import io.dronefleet.mavlink.common.MavAutopilot;
 import io.dronefleet.mavlink.common.MavState;
 import io.dronefleet.mavlink.common.MavType;
 
-@Component(service = BaseBridgeHandler.class, configurationPid = "bridge.mavlinkardupilot")
+//@Component(service = BaseBridgeHandler.class, configurationPid = "bridge.mavlinkardupilot")
 @NonNullByDefault
 public class MavLinkArduPilotAbstractBridge extends BaseBridgeHandler {
 
