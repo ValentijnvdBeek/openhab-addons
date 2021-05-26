@@ -6,19 +6,32 @@
 
 	<!-- Sample Thing Type -->
 	<!-- TODO Change listed to false at the end after configuring the sample -->
-	<bridge-type id="MavLinkBroker" listed="true">
+	<bridge-type id="bridge" listed="true">
 		<label>MavLink Broker</label>
 		<description>Required for ArduPilot connection. DO NOT MODIFY!</description>
 		<!-- <channels> -->
 		<!-- <channel id="channel1" typeId="sample-channel"/> -->
 		<!-- </channels> -->
-		<config-description-ref uri="thing-type:mavlinkardupilot:mavBridge"></config-description-ref>
+		<config-description>
+			<parameter name="uri" type="text" required="true">
+				<label>URI</label>
+				<description>The URI to connect to a MAVLink server</description>
+			</parameter>
+			<parameter name="port" type="integer" required="true">
+				<label>Port</label>
+				<description>The port to which the MAVLink</description>
+			</parameter>
+			<parameter name="type" type="text" required="true">
+				<label>Network Type</label>
+				<description>Only TCP supported</description>
+			</parameter>
+		</config-description>
 	</bridge-type>
 
 	<thing-type id="sample" listed="true">
 		<!-- Comment this in for Things which need a Bridge to function. -->
 		<supported-bridge-type-refs>
-			<bridge-type-ref id="MavLinkBroker"/>
+			<bridge-type-ref id="bridge"/>
 		</supported-bridge-type-refs>
 
 		<label>MavLinkArduPilot Binding Thing</label>

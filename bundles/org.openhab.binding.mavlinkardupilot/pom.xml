@@ -18,8 +18,7 @@
       !sun.*,\
       io.dronefleet.*;resolution:=optional,\
       io.grpc.*;resolution:=optional,\
-      io.reactivex.*;resolution:=optional,\
-      org.slf4j.*;resolution:=optional</bnd.importpackage>
+      io.reactivex.*;resolution:=optional</bnd.importpackage>
 
   </properties>
   <artifactId>org.openhab.binding.mavlinkardupilot</artifactId>
@@ -43,6 +42,12 @@
       <artifactId>slf4j-api</artifactId>
       <version>1.7.28</version>
     </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>1.7.28</version>
+    </dependency>
+
   </dependencies>
   <build>
     <plugins>
